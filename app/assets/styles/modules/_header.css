@@ -1,0 +1,182 @@
+.header {
+   position: absolute;
+   display: block;
+   top:0;
+    z-index: auto;
+    
+   
+}
+
+
+
+
+
+.header_info {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    padding: 0 0;
+   
+   
+    
+    @mixin atMedium {
+         background: rgba(#FFF,0.9);
+         position: fixed;
+         -webkit-box-shadow: 0 10px 6px -6px $silver;
+         -moz-box-shadow: 0 10px 6px -6px $silver;
+         box-shadow:  0 10px 6px -6px $silver;
+         height: 100px;
+         transition: all .3s;
+    }
+  
+    
+    &__logo {
+        
+        position: absolute;
+        left: 50%;
+        top:25%;
+        transform: scale(1.7);
+        box-shadow: 1px 1px 1px $lightBlue;
+        transition: all 1.7s;
+        transform: ease-in;
+     
+    }
+    
+    &__title {
+        position: absolute;
+        left: 20px;
+        margin-top: 20px;
+        font-size: 1rem;
+        color:$silver;
+        display: block;
+        text-transform: uppercase;
+        font-family: 'Vollkorn SC', serif;
+        font-weight: 300;
+
+    }
+    
+     &__name {
+        
+        position: absolute;
+        left: 0;
+        padding-top: 40px;
+         padding-left: 20px;
+        font-size: 1.5rem;
+        color:$lightBlue;
+        display: block;
+        font-family:  'Vollkorn SC', serif,cursive;
+        cursor: default;
+        transition: all .3s;
+        opacity: 0;
+         transform: translateX(-50%);
+    }
+    
+ 
+   
+    
+
+    
+   
+    
+        
+    &__navbar_icon {
+        
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            z-index: 10;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        
+        
+        &__hamburgermenu {
+            background-color: $silver;
+            width: 20px;
+            height: 2px;
+            position: absolute;
+            top:0;
+            left:0;
+           
+            
+
+          
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        
+            
+            &::before {
+            content:"";
+            background-color:  $silver;
+            width: 20px;
+            height: 2px;
+            position: absolute;
+            top:6px;
+            left:0;
+            
+           
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            }
+            &::after {
+            content:"";
+            background-color: $silver;
+            width: 20px;
+            height: 1.5px;
+            position: absolute;
+            top:-6px;
+            left:0;
+           
+              
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            }    
+        
+        }
+        
+            @mixin atMedium {
+              
+            }
+            
+        }
+        
+  
+    
+}
+
+
+
+
+
+.header_info__title__hidden {
+    display: none;
+    
+    @mixin atMedium{
+        display: block;
+    }
+}
+.scroll_nav {
+    transition: all .3s;
+    padding: 10px 0;
+    background: #FFF;
+    
+}
+
+.scroll_nav .header_info__logo {
+    transform: scale(2.2);
+}
+
+.scroll_nav .header_info__name {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
