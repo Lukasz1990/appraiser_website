@@ -3,9 +3,14 @@
     position: relative;
     width: 100%;
     height:100%;
-    margin: auto;
+    margin: 0;
     padding: 0;
-    z-index: 0;
+  
+
+    
+    @mixin atSmall {
+        display: block;
+    }
    
 }
 .placeHolder {
@@ -23,12 +28,12 @@
     background-attachment: fixed;
 }
 .slide1 {
-    background-image: url(../../../images/photo1.jpg);
+    background-image: url(../../images/photo1.jpg);
     opacity: 0.8;
     
     
     &__text {
-        font-size: 2rem;
+        font-size: 0.8rem;
         font-weight: 500;
         margin-left: auto;
         margin-right: auto;
@@ -42,15 +47,20 @@
         background: rgba($lightBlue,0.2);
        
         
+        @mixin atSmall {
+        font-size: 2rem;
+        font-weight: 500;
+        }
+        
     }
 }
 .slide2 {
-    background-image: url(../../../images/photo3.jpg);
+    background-image: url(../../images/photo3.jpg);
     animation: slide2Anim 20s infinite;
      opacity: 0.3;
     
         &__text {
-        font-size: 2rem;
+        font-size: 0.8rem;
         font-weight: 500;
         margin-left: auto;
         margin-right: auto;
@@ -62,7 +72,10 @@
         font-family: 'Cormorant', serif, cursive;
         color:#FFF;
         
-        
+           @mixin atSmall {
+              font-size: 2rem;
+        font-weight: 500;
+        }
     }
 }
 
@@ -88,24 +101,49 @@
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 100px;
     align-content: center;
-    grid-auto-rows: 400px;
+    grid-auto-rows: minmax(200px,auto);
+    margin-bottom: 90px;
     margin-top: 30px;
-    font-family: 'Vollkorn SC', serif;
-    font-size: 0.9rem;
-    overflow: hidden;
+   font-family: 'Roboto Slab', serif;
+    font-size: 1.38rem;
+    
+    font-weight: 400;
+   
+    text-align: left;
+    
+       & > div {
+        border-radius: 3%;
+    
+    }
+    
+  
     
     @mixin atSmall {
         grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
     
     @mixin atMedium {
-         grid-template-columns: repeat(3, 1fr);
+         grid-template-columns: 2fr 3fr 3fr;
+          align-content: center;
+        grid-auto-rows: 400px;
+          margin-bottom: -40px;
+          justify-content: center;
     }
     
     &_icon {
         border-radius: 50%;
         background: rgba($lightBlue,0.5);
         
+        & img {
+            width:90px;
+            height:90px;
+          
+            float:left;
+        }
      
      
     }
@@ -115,34 +153,55 @@
      display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 100px;
-    align-content: center;
-    grid-auto-rows: 400px;
+    grid-auto-rows: minmax(300px,auto);
     margin-top: 10px;
-    font-family: 'Cormorant', serif;
-    font-size: 1.3rem;
-    overflow: hidden;
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.9rem;
     margin-bottom: 150px;
-    font-weight: 700;
+    font-weight: 300;
+    margin: 0 auto;
+  
     
+   
+  
     
-    &_span {
-        font-size: 1.5rem;
-        font-weight: 700;
+    @mixin atMedium {
+        font-size:1.2rem;
+        
     }
     
+ 
+   
     
     & > div {
         background: rgba($lightBlue,0.2);
         padding: 20px 20px 10px;
-        border-radius: 60%;
+        border-radius: none;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
        
+        @mixin atMedium {
+            background: rgba($lightBlue,0.2);
+             
+                border-radius: 60%;
+        }
+        
+      
     }
     
     
     
     &_h {
         color:$lightBlue;
-        font-size: 2rem;
+        font-size: 1rem;
+          text-transform: uppercase;
+        font-family: 'Cormorant', serif;
+        font-weight: 300;
+        
+        @mixin atSmall {
+            font-size: 2rem;
+        }
         
         
     }
@@ -158,9 +217,14 @@
 }
 
 .section1_title {
-    font-family: 'Vollkorn SC', serif;
+    font-family: 'Cormorant', serif;
     font-size: 2rem;
     text-align: center;
-    color:$silver;
-    font-weight: 100;
+    color:$lightBlue;
+    font-weight: 300;
+    text-transform: uppercase;
 }
+
+
+
+

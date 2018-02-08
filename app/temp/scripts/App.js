@@ -50,17 +50,13 @@
 
 	var _MyMenu2 = _interopRequireDefault(_MyMenu);
 
-	var _MyHeader = __webpack_require__(3);
+	var _MyHeader = __webpack_require__(4);
 
 	var _MyHeader2 = _interopRequireDefault(_MyHeader);
 
-	var _ScrollMenu = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./modules/ScrollMenu\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _ScrollMenu = __webpack_require__(5);
 
 	var _ScrollMenu2 = _interopRequireDefault(_ScrollMenu);
-
-	var _ScrollReveal = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./modules/ScrollReveal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	var _ScrollReveal2 = _interopRequireDefault(_ScrollReveal);
 
 	var _jquery = __webpack_require__(2);
 
@@ -76,48 +72,72 @@
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _jquery = __webpack_require__(2);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	var _jquerySmoothScroll = __webpack_require__(3);
+
+	var _jquerySmoothScroll2 = _interopRequireDefault(_jquerySmoothScroll);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function scrollNav() {
+	    (0, _jquery2.default)('.navbar a').click(function () {
+	        //Toggle Class
+	        (0, _jquery2.default)(".active").removeClass("active");
+	        (0, _jquery2.default)(this).closest('li').addClass("active");
+	        var theClass = (0, _jquery2.default)(this).attr("class");
+	        (0, _jquery2.default)('.' + theClass).parent('li').addClass('active');
+	        //Animate
+	        (0, _jquery2.default)('html, body').stop().animate({
+	            scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).offset().top - 160
+	        }, 400);
+	        return false;
+	    });
+	    (0, _jquery2.default)('.scrollTop a').scrollTop();
+	}
+	scrollNav();
 
-	var MobileMenu = function () {
-	  function MobileMenu() {
-	    _classCallCheck(this, MobileMenu);
+	(0, _jquery2.default)('.open_menu').click(function () {
+	    (0, _jquery2.default)('.navbar').toggleClass('navbar_open');
+	    (0, _jquery2.default)('.open_menu').toggleClass('open');
+	});
 
-	    this.menuIcon = (0, _jquery2.default)(".header_info__navbar_icon");
-	    this.headerInfo = (0, _jquery2.default)(".header_info");
-	    this.menuContent = (0, _jquery2.default)(".header_info__menu");
-	    this.events();
-	  }
+	//back to top button //
+	var offset = 250;
+	var duration = 300;
 
-	  _createClass(MobileMenu, [{
-	    key: "events",
-	    value: function events() {
-	      this.menuIcon.click(this.toggleTheMenu.bind(this));
+	(0, _jquery2.default)(window).scroll(function () {
+	    if ((0, _jquery2.default)(this).scrollTop() > offset) {
+
+	        (0, _jquery2.default)('.back-to-top').fadeIn(duration);
+	    } else {
+	        (0, _jquery2.default)('.back-to-top').fadeOut(duration);
 	    }
-	  }, {
-	    key: "toggleTheMenu",
-	    value: function toggleTheMenu() {
-	      this.menuContent.toggleClass("header_info__menu__is_visible");
-	      this.headerInfo.toggleClass("header_info__is-expanded");
-	      this.menuIcon.toggleClass("header_info__navbar_icon--close-x");
-	    }
-	  }]);
+	});
+	(0, _jquery2.default)('.back-to-top').click(function (event) {
+	    event.preventDefault();
+	    (0, _jquery2.default)('html, body').animate({ scrollTop: 0 }, duration);
+	    return false;
+	});
 
-	  return MobileMenu;
-	}();
+	function scrollpls() {
+	    var navbar = document.getElementById('header');
+	    if (window.scrollY >= 183) {
+	        navbar.classList.add('scroll_nav');
+	    } else {
+	        navbar.classList.remove('scroll_nav');
+	    }
+	}
+
+	window.addEventListener('scroll', scrollpls);
 
 	exports.default = MobileMenu;
 
@@ -10495,6 +10515,370 @@
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * jQuery Smooth Scroll - v2.2.0 - 2017-05-05
+	 * https://github.com/kswedberg/jquery-smooth-scroll
+	 * Copyright (c) 2017 Karl Swedberg
+	 * Licensed MIT
+	 */
+
+	(function(factory) {
+	  if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof module === 'object' && module.exports) {
+	    // CommonJS
+	    factory(require('jquery'));
+	  } else {
+	    // Browser globals
+	    factory(jQuery);
+	  }
+	}(function($) {
+
+	  var version = '2.2.0';
+	  var optionOverrides = {};
+	  var defaults = {
+	    exclude: [],
+	    excludeWithin: [],
+	    offset: 0,
+
+	    // one of 'top' or 'left'
+	    direction: 'top',
+
+	    // if set, bind click events through delegation
+	    //  supported since jQuery 1.4.2
+	    delegateSelector: null,
+
+	    // jQuery set of elements you wish to scroll (for $.smoothScroll).
+	    //  if null (default), $('html, body').firstScrollable() is used.
+	    scrollElement: null,
+
+	    // only use if you want to override default behavior
+	    scrollTarget: null,
+
+	    // automatically focus the target element after scrolling to it
+	    autoFocus: false,
+
+	    // fn(opts) function to be called before scrolling occurs.
+	    // `this` is the element(s) being scrolled
+	    beforeScroll: function() {},
+
+	    // fn(opts) function to be called after scrolling occurs.
+	    // `this` is the triggering element
+	    afterScroll: function() {},
+
+	    // easing name. jQuery comes with "swing" and "linear." For others, you'll need an easing plugin
+	    // from jQuery UI or elsewhere
+	    easing: 'swing',
+
+	    // speed can be a number or 'auto'
+	    // if 'auto', the speed will be calculated based on the formula:
+	    // (current scroll position - target scroll position) / autoCoeffic
+	    speed: 400,
+
+	    // coefficient for "auto" speed
+	    autoCoefficient: 2,
+
+	    // $.fn.smoothScroll only: whether to prevent the default click action
+	    preventDefault: true
+	  };
+
+	  var getScrollable = function(opts) {
+	    var scrollable = [];
+	    var scrolled = false;
+	    var dir = opts.dir && opts.dir === 'left' ? 'scrollLeft' : 'scrollTop';
+
+	    this.each(function() {
+	      var el = $(this);
+
+	      if (this === document || this === window) {
+	        return;
+	      }
+
+	      if (document.scrollingElement && (this === document.documentElement || this === document.body)) {
+	        scrollable.push(document.scrollingElement);
+
+	        return false;
+	      }
+
+	      if (el[dir]() > 0) {
+	        scrollable.push(this);
+	      } else {
+	        // if scroll(Top|Left) === 0, nudge the element 1px and see if it moves
+	        el[dir](1);
+	        scrolled = el[dir]() > 0;
+
+	        if (scrolled) {
+	          scrollable.push(this);
+	        }
+	        // then put it back, of course
+	        el[dir](0);
+	      }
+	    });
+
+	    if (!scrollable.length) {
+	      this.each(function() {
+	        // If no scrollable elements and <html> has scroll-behavior:smooth because
+	        // "When this property is specified on the root element, it applies to the viewport instead."
+	        // and "The scroll-behavior property of the … body element is *not* propagated to the viewport."
+	        // → https://drafts.csswg.org/cssom-view/#propdef-scroll-behavior
+	        if (this === document.documentElement && $(this).css('scrollBehavior') === 'smooth') {
+	          scrollable = [this];
+	        }
+
+	        // If still no scrollable elements, fall back to <body>,
+	        // if it's in the jQuery collection
+	        // (doing this because Safari sets scrollTop async,
+	        // so can't set it to 1 and immediately get the value.)
+	        if (!scrollable.length && this.nodeName === 'BODY') {
+	          scrollable = [this];
+	        }
+	      });
+	    }
+
+	    // Use the first scrollable element if we're calling firstScrollable()
+	    if (opts.el === 'first' && scrollable.length > 1) {
+	      scrollable = [scrollable[0]];
+	    }
+
+	    return scrollable;
+	  };
+
+	  var rRelative = /^([\-\+]=)(\d+)/;
+
+	  $.fn.extend({
+	    scrollable: function(dir) {
+	      var scrl = getScrollable.call(this, {dir: dir});
+
+	      return this.pushStack(scrl);
+	    },
+	    firstScrollable: function(dir) {
+	      var scrl = getScrollable.call(this, {el: 'first', dir: dir});
+
+	      return this.pushStack(scrl);
+	    },
+
+	    smoothScroll: function(options, extra) {
+	      options = options || {};
+
+	      if (options === 'options') {
+	        if (!extra) {
+	          return this.first().data('ssOpts');
+	        }
+
+	        return this.each(function() {
+	          var $this = $(this);
+	          var opts = $.extend($this.data('ssOpts') || {}, extra);
+
+	          $(this).data('ssOpts', opts);
+	        });
+	      }
+
+	      var opts = $.extend({}, $.fn.smoothScroll.defaults, options);
+
+	      var clickHandler = function(event) {
+	        var escapeSelector = function(str) {
+	          return str.replace(/(:|\.|\/)/g, '\\$1');
+	        };
+
+	        var link = this;
+	        var $link = $(this);
+	        var thisOpts = $.extend({}, opts, $link.data('ssOpts') || {});
+	        var exclude = opts.exclude;
+	        var excludeWithin = thisOpts.excludeWithin;
+	        var elCounter = 0;
+	        var ewlCounter = 0;
+	        var include = true;
+	        var clickOpts = {};
+	        var locationPath = $.smoothScroll.filterPath(location.pathname);
+	        var linkPath = $.smoothScroll.filterPath(link.pathname);
+	        var hostMatch = location.hostname === link.hostname || !link.hostname;
+	        var pathMatch = thisOpts.scrollTarget || (linkPath === locationPath);
+	        var thisHash = escapeSelector(link.hash);
+
+	        if (thisHash && !$(thisHash).length) {
+	          include = false;
+	        }
+
+	        if (!thisOpts.scrollTarget && (!hostMatch || !pathMatch || !thisHash)) {
+	          include = false;
+	        } else {
+	          while (include && elCounter < exclude.length) {
+	            if ($link.is(escapeSelector(exclude[elCounter++]))) {
+	              include = false;
+	            }
+	          }
+
+	          while (include && ewlCounter < excludeWithin.length) {
+	            if ($link.closest(excludeWithin[ewlCounter++]).length) {
+	              include = false;
+	            }
+	          }
+	        }
+
+	        if (include) {
+	          if (thisOpts.preventDefault) {
+	            event.preventDefault();
+	          }
+
+	          $.extend(clickOpts, thisOpts, {
+	            scrollTarget: thisOpts.scrollTarget || thisHash,
+	            link: link
+	          });
+
+	          $.smoothScroll(clickOpts);
+	        }
+	      };
+
+	      if (options.delegateSelector !== null) {
+	        this
+	        .off('click.smoothscroll', options.delegateSelector)
+	        .on('click.smoothscroll', options.delegateSelector, clickHandler);
+	      } else {
+	        this
+	        .off('click.smoothscroll')
+	        .on('click.smoothscroll', clickHandler);
+	      }
+
+	      return this;
+	    }
+	  });
+
+	  var getExplicitOffset = function(val) {
+	    var explicit = {relative: ''};
+	    var parts = typeof val === 'string' && rRelative.exec(val);
+
+	    if (typeof val === 'number') {
+	      explicit.px = val;
+	    } else if (parts) {
+	      explicit.relative = parts[1];
+	      explicit.px = parseFloat(parts[2]) || 0;
+	    }
+
+	    return explicit;
+	  };
+
+	  var onAfterScroll = function(opts) {
+	    var $tgt = $(opts.scrollTarget);
+
+	    if (opts.autoFocus && $tgt.length) {
+	      $tgt[0].focus();
+
+	      if (!$tgt.is(document.activeElement)) {
+	        $tgt.prop({tabIndex: -1});
+	        $tgt[0].focus();
+	      }
+	    }
+
+	    opts.afterScroll.call(opts.link, opts);
+	  };
+
+	  $.smoothScroll = function(options, px) {
+	    if (options === 'options' && typeof px === 'object') {
+	      return $.extend(optionOverrides, px);
+	    }
+	    var opts, $scroller, speed, delta;
+	    var explicitOffset = getExplicitOffset(options);
+	    var scrollTargetOffset = {};
+	    var scrollerOffset = 0;
+	    var offPos = 'offset';
+	    var scrollDir = 'scrollTop';
+	    var aniProps = {};
+	    var aniOpts = {};
+
+	    if (explicitOffset.px) {
+	      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, optionOverrides);
+	    } else {
+	      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, options || {}, optionOverrides);
+
+	      if (opts.scrollElement) {
+	        offPos = 'position';
+
+	        if (opts.scrollElement.css('position') === 'static') {
+	          opts.scrollElement.css('position', 'relative');
+	        }
+	      }
+
+	      if (px) {
+	        explicitOffset = getExplicitOffset(px);
+	      }
+	    }
+
+	    scrollDir = opts.direction === 'left' ? 'scrollLeft' : scrollDir;
+
+	    if (opts.scrollElement) {
+	      $scroller = opts.scrollElement;
+
+	      if (!explicitOffset.px && !(/^(?:HTML|BODY)$/).test($scroller[0].nodeName)) {
+	        scrollerOffset = $scroller[scrollDir]();
+	      }
+	    } else {
+	      $scroller = $('html, body').firstScrollable(opts.direction);
+	    }
+
+	    // beforeScroll callback function must fire before calculating offset
+	    opts.beforeScroll.call($scroller, opts);
+
+	    scrollTargetOffset = explicitOffset.px ? explicitOffset : {
+	      relative: '',
+	      px: ($(opts.scrollTarget)[offPos]() && $(opts.scrollTarget)[offPos]()[opts.direction]) || 0
+	    };
+
+	    aniProps[scrollDir] = scrollTargetOffset.relative + (scrollTargetOffset.px + scrollerOffset + opts.offset);
+
+	    speed = opts.speed;
+
+	    // automatically calculate the speed of the scroll based on distance / coefficient
+	    if (speed === 'auto') {
+
+	      // $scroller[scrollDir]() is position before scroll, aniProps[scrollDir] is position after
+	      // When delta is greater, speed will be greater.
+	      delta = Math.abs(aniProps[scrollDir] - $scroller[scrollDir]());
+
+	      // Divide the delta by the coefficient
+	      speed = delta / opts.autoCoefficient;
+	    }
+
+	    aniOpts = {
+	      duration: speed,
+	      easing: opts.easing,
+	      complete: function() {
+	        onAfterScroll(opts);
+	      }
+	    };
+
+	    if (opts.step) {
+	      aniOpts.step = opts.step;
+	    }
+
+	    if ($scroller.length) {
+	      $scroller.stop().animate(aniProps, aniOpts);
+	    } else {
+	      onAfterScroll(opts);
+	    }
+	  };
+
+	  $.smoothScroll.version = version;
+	  $.smoothScroll.filterPath = function(string) {
+	    string = string || '';
+
+	    return string
+	      .replace(/^\//, '')
+	      .replace(/(?:index|default).[a-zA-Z]{3,4}$/, '')
+	      .replace(/\/$/, '');
+	  };
+
+	  // default options
+	  $.fn.smoothScroll.defaults = defaults;
+
+	}));
+
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -10512,35 +10896,6 @@
 	var MyHeader = function MyHeader() {
 	  _classCallCheck(this, MyHeader);
 	};
-
-	//arrow scroll down button //
-
-
-	(0, _jquery2.default)(function () {
-	  (0, _jquery2.default)('.scroll-down').click(function () {
-	    (0, _jquery2.default)('html, body').animate({ scrollTop: (0, _jquery2.default)('.our_beginning__space').offset().top }, 700, 'linear');
-	    return false;
-	  });
-	});
-
-	//back to top button //
-
-	var offset = 250;
-	var duration = 300;
-
-	(0, _jquery2.default)(window).scroll(function () {
-	  if ((0, _jquery2.default)(this).scrollTop() > offset) {
-
-	    (0, _jquery2.default)('.back-to-top').fadeIn(duration);
-	  } else {
-	    (0, _jquery2.default)('.back-to-top').fadeOut(duration);
-	  }
-	});
-	(0, _jquery2.default)('.back-to-top').click(function (event) {
-	  event.preventDefault();
-	  (0, _jquery2.default)('html, body').animate({ scrollTop: 0 }, duration);
-	  return false;
-	});
 
 	function debounce(func) {
 	  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
@@ -10582,6 +10937,41 @@
 	window.addEventListener('scroll', debounce(checkSlide));
 
 	exports.default = MyHeader;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _jquery = __webpack_require__(2);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function scrollNav() {
+	  (0, _jquery2.default)('.navbar a').click(function () {
+	    //Toggle Class
+	    (0, _jquery2.default)(".active").removeClass("active");
+	    (0, _jquery2.default)(this).closest('li').addClass("active");
+	    var theClass = (0, _jquery2.default)(this).attr("class");
+	    (0, _jquery2.default)('.' + theClass).parent('li').addClass('active');
+	    //Animate
+	    (0, _jquery2.default)('html, body').stop().animate({
+	      scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).offset().top - 160
+	    }, 400);
+	    return false;
+	  });
+	  (0, _jquery2.default)('.scrollTop a').scrollTop();
+	}
+	scrollNav();
+
+	exports.default = ScrollMenu;
 
 /***/ })
 /******/ ]);

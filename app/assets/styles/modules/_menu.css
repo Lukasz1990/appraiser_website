@@ -1,100 +1,52 @@
 
 
-
-
-.primary-nav {
-  padding-top: 10px;
-    display: none;
-  
-    @mixin atSmall {
-        
-    }
-
-
-  @mixin atMedium {
-    padding-top: 0;
-     float: right;
-    display: block;
-    
-       
-  }
-
- 
-  ul {
-    margin: 0;
-    padding: 0;
-      
-     
-  
-  }
-
-    li {
-    
-   
-    
-    
-         @mixin atMedium {
-      padding-right: 20px;
-      float: left;
-      display: block;
-      padding-top: 40px;
-      
-             
-    }
-  }
-    
-     a {
-    color: $silver;
-    font-weight: 500;
-    text-decoration: none;
-    display: block;
-    text-transform: uppercase;
-    font-family: 'Cormorant', serif;
-    font-size: 0.75rem;
-   transition: all .6s;
-    padding: 5px 5px;
-         
-         
-   
-
-         @mixin atSmall {
-             font-size: 0.85rem;
-         }  
-         
-    @mixin atMedium {
-     
-     font-size: 1.2rem;
-
-        
-    }
-      
-}
-
-
-    
-    a:hover {
-
-        color: $lightBlue;
-        
-        
-
-}
-
-}
-    
-
-
-.slidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 2;
+.navbar {
+    clip-path:circle(0px at top right);
+    float:right;
+    transition: all ease-in-out 700ms;
+    top:100%;
+    right:0;
+    position: absolute;
     background:$lightBlue;
+    overflow: hidden;
+    border-radius: 10px;
     
-    transition: 0.5s;
-    overflow-x: hidden;
+    @mixin atSmall {
+      
+        position: relative;
+        top:0;
+        width: auto;
+        height: auto;
+        background: transparent;
+        clip-path:none;
+        
+        
+    }
+      
+    & ul {
+        list-style: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+        
+      
+        
    
+       
+    }
+    
+    & li{
+        @mixin atSmall {
+            display: inline-block;
+        }
+    }
+    
+    & li.active a {
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
    
+    
     & a {
             color: #FFF;
             font-weight: 500;
@@ -104,47 +56,141 @@
             font-family: 'Cormorant', serif;
             font-size: 1.5rem;
             margin-top: 40px;
-            padding: 5px 5px 5px 35px;
+            padding: 5px 25px 25px 35px;
             margin-right: 10px;
             text-align: center;
-            
-
+            transition: all .7s;
         
-        &:hover .line {
-            width: 250px;
+        
+        
+        
+        @mixin atSmall {
+                font-size: 1.1rem;
+                color: #FFF;
+                font-weight: 500;
+                text-decoration: none;
+                display: block;
+                text-transform: uppercase;
+                font-family: 'Cormorant', serif;
+                transition: none;
+                padding: 0px 5px;
+            
+            &:hover {
+               border-bottom: 0.5px solid #FFF;
+                
+            }
         }
+        
+        @mixin atMedium {
+            padding: 0 25px;
+            font-size:1.3rem;
+            font-weight: 500;
+            transition: 500ms;
+            
+        }
+            
+        &:hover .line {
+            width: 150px
+        }
+      
+   
+    }
+}
+
+.scroll_nav .navbar ul li a {
+    @mixin atSmall {
+        color:$lightBlue;
+        &:hover {
+               border-bottom: 0.5px solid $lightBlue;
+                
+            }
+    }
+}
+
+.navbar_open {
+    clip-path:circle(140% at top left);
+    
+}
+
+
+.open_menu {
+    background:$lightBlue;
+    position: absolute;
+    top:0.7em;
+    right:0.7em;
+    padding: 1em;
+    cursor: pointer;
+    z-index: 2;
+
+    
+    @mixin atSmall {
+        display:none;
     }
     
-   
+ 
+}
+
+.open_menu__icon,
+.open_menu__icon::after,
+.open_menu__icon::before
+{
+    content:"";
+    background: #FFF;
+    height:3px;
+    display: block;
+    width: 30px;
+    border-radius: 2px;
+    transition: ease-in-out 500ms;
+    
+}
+.open_menu__icon::after {
+    transform: translateY(4px);
+ 
+}
+.open_menu__icon::before {
+    transform: translateY(-6px);
+    
+}
+.open .open_menu__icon {
+    transform: rotate(45deg);
+}
+.open .open_menu__icon::before {
+    opacity: 0;
+}
+
+.open .open_menu__icon::after{
+    transform: translateY(-3px) rotate(-90deg);
 }
 
 
 
-  
 .line {
     height: 1px;
-    width: 150px;
+    width: 100px;
     background-color: #FFF;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 30px;
     transition: all .3s;
     left: 50%;
     transform: translate(-50%);
     
-   
+    
 }
 
 
 
-.button_x {
-    transform: scale(3);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    margin-left: -65px;
-}
+
+
+
+
+
+  
+
+
+
+
+
+
 
 
 

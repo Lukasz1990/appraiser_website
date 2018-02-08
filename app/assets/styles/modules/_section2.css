@@ -1,0 +1,155 @@
+.image_space {
+    
+    background-image: url(../../images/Shrub-100px-1920x750.jpg);
+    height:100%;
+
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+       -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    margin-bottom: -10px;
+    
+     
+    @mixin atMedium {
+        height: 80vh;
+    }
+    
+    &__h1 {
+        text-align: center;
+        color:#FFF;
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-family: 'Cormorant', serif;
+        font-weight: 300;
+        transform: translateY(20px);
+        
+        @mixin atSmall {
+             font-size: 4rem;
+        }
+    }
+}
+
+
+ .image_space__grid {
+        
+        display: grid;
+        grid-template-columns:repeat(1, 1fr);
+        grid-gap: 50px;
+        position: relative;
+        overflow: hidden;
+        grid-auto-rows:80px;
+        padding: 10px 10px;
+        height: auto;
+        width: auto;
+        top:15%;
+        margin: 0;
+     
+        
+        
+        
+        @mixin atSmall {
+               grid-template-columns:repeat(2, 1fr);
+               grid-gap: 100px;
+               grid-auto-rows: 100px;
+        }
+     
+     @mixin atLarge {
+               grid-template-columns:repeat(3, 1fr);
+               grid-gap: 200px;
+               top:30%;
+               grid-auto-rows: 150px;
+     }
+        
+        
+        
+        
+      
+        
+        & > div {
+            background: rgba($lightBlue,0.7);
+            height: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:#FFF;
+            font-family: 'Cormorant', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0 10px 26px -10px $lightBlue;
+            -moz-box-shadow: 0 10px 26px -10px $lightBlue;
+            box-shadow:  0 10px 26px -10px $lightBlue;
+            
+           
+            @mixin atSmall {
+            font-size: 1.2rem;
+            }
+        }
+        
+        &__1 {
+            &:before{
+                content: "";
+                background-image: url(../../images/icons/house3.svg);
+                position:relative;
+                height: 20px;
+                width: 20px;
+                margin-right: 5px;
+                padding: 15px;
+                 background-repeat: no-repeat;
+                
+                @mixin atSmall {
+                      height: 40px;
+                      width: 40px;
+                     margin-right: 10px;
+                     padding: 15px;
+                }
+               
+            }
+        }
+        
+         &__2 {
+            &:before{
+                content: "";
+                background-image: url(../../images/icons/house2.svg);
+                position:relative;
+                background-repeat: no-repeat;
+                height: 15px;
+                width: 15px;   
+                
+                margin-right: 10px;
+                padding: 15px;
+                    @mixin atSmall {
+                      height:25px;
+                      width: 25px;
+                     margin-right: 10px;
+                     padding: 15px;
+                }
+            }
+        }
+        
+           &__3 {
+            &:before{
+                content: "";
+                background-image: url(../../images/icons/house1.svg);
+                position:relative;
+                height: 25px;
+                width: 25px;
+                 margin-right: 10px;
+                padding: 10px;
+               
+                     @mixin atSmall {
+                      height: 35px;
+                      width: 35px;
+                     margin-right: 10px;
+                     padding: 10px;
+                }
+            }
+        }
+    }
+    
+
