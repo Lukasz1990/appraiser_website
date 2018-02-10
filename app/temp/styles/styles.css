@@ -668,7 +668,7 @@ body {
 
 .section1_grid2_h {
   color:#25b6d2;
-  font-size: 1.5rem;
+  font-size:2rem;
   text-transform: uppercase;
   font-family: 'Cormorant', serif;
   font-weight: 300;
@@ -706,11 +706,18 @@ body {
 
 .section1_title {
     font-family: 'Cormorant', serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     color:#25b6d2;
     font-weight: 300;
     text-transform: uppercase;
+}
+
+@media (min-width: 730px) {
+
+  .section1_title {
+    font-size: 2rem;
+  }
 }
 
 .image_space {
@@ -799,6 +806,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: wrap;
+      -ms-flex: wrap;
+          flex: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -807,7 +817,7 @@ body {
           justify-content: center;
   color:#FFF;
   font-family: 'Cormorant', serif;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   box-shadow:  0 10px 26px -10px #25b6d2;
   box-sizing: border-box;
@@ -816,7 +826,7 @@ body {
 @media (min-width: 730px) {
 
   .image_space__grid > div {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -901,7 +911,7 @@ body {
   font-family: 'Cormorant', serif;
   font-weight: 300;
   padding: 20px;
-  color: #25b6d2;
+  color: #FFF;
 }
 
 @media (min-width: 730px) {

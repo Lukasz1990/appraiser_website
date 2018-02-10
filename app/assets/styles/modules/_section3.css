@@ -17,7 +17,7 @@
         font-family: 'Cormorant', serif;
         font-weight: 300;
         padding: 20px;
-        color: $lightBlue;
+        color: #FFF;
         
         
         @mixin atSmall {

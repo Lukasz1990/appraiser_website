@@ -196,7 +196,7 @@
     
     &_h {
         color:$lightBlue;
-        font-size: 1.5rem;
+        font-size:2rem;
           text-transform: uppercase;
         font-family: 'Cormorant', serif;
         font-weight: 300;
@@ -224,11 +224,15 @@
 
 .section1_title {
     font-family: 'Cormorant', serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     color:$lightBlue;
     font-weight: 300;
     text-transform: uppercase;
+    
+    @mixin atSmall {
+        font-size:2rem;
+    }
 }
 
 

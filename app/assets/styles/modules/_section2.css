@@ -78,11 +78,12 @@
             height: auto;
             position: relative;
             display: flex;
+            flex: wrap;
             align-items: center;
             justify-content: center;
             color:#FFF;
             font-family: 'Cormorant', serif;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             -webkit-box-shadow: 0 10px 26px -10px $lightBlue;
             -moz-box-shadow: 0 10px 26px -10px $lightBlue;
@@ -90,7 +91,7 @@
             box-sizing: border-box;
            
             @mixin atSmall {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             }
         }
         
