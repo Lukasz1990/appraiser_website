@@ -28,7 +28,7 @@
     background-attachment: fixed;
 }
 .slide1 {
-    background-image: url(../../images/photo1.jpg);
+    background-image: url(../../images/architecture_skyscraper_glass_skyscrapers.jpg);
     opacity: 0.8;
     
     
@@ -44,8 +44,8 @@
         position: relative;
         color:#FFF;
         font-family: 'Cormorant', serif;
-        background: rgba($lightBlue,0.2);
-       
+        
+         text-shadow: 2px 2px 2px $silver;
         
         @mixin atSmall {
         font-size: 2rem;
@@ -55,7 +55,7 @@
     }
 }
 .slide2 {
-    background-image: url(../../images/photo3.jpg);
+    background-image:url(../../images/photo1.jpg); 
     animation: slide2Anim 20s infinite;
      opacity: 0.3;
     
@@ -69,8 +69,10 @@
         transform: translateY(-30%); 
         position: relative;
         text-transform: uppercase;
-        font-family: 'Cormorant', serif, cursive;
+        font-family: 'Cormorant', serif;
         color:#FFF;
+        text-shadow: 2px 2px 2px $silver;
+        
         
            @mixin atSmall {
               font-size: 2rem;
@@ -194,13 +196,17 @@
     
     &_h {
         color:$lightBlue;
-        font-size: 1rem;
+        font-size: 1.5rem;
           text-transform: uppercase;
         font-family: 'Cormorant', serif;
         font-weight: 300;
         
-        @mixin atSmall {
-            font-size: 2rem;
+        
+        @mixin atTiny {
+            font-size:2rem;
+        }
+        @mixin atMedium {
+            font-size: 2.5rem;
         }
         
         

@@ -75,7 +75,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _jquery = __webpack_require__(2);
@@ -88,56 +88,94 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var sliderImages = document.querySelectorAll('.slide_down');
+
+	function checkSlide() {
+	  sliderImages.forEach(function (sliderImage) {
+	    // half way through the image
+	    var slideInAt = window.scrollY + window.innerHeight - sliderImage.height * 1.2;
+	    // bottom of the image
+	    var imageBottom = sliderImage.offsetTop + sliderImage.height;
+	    var isHalfShown = slideInAt > sliderImage.offsetTop;
+	    var isNotScrolledPast = window.scrollY < imageBottom;
+	    if (isHalfShown && isNotScrolledPast) {
+	      sliderImage.classList.add('active');
+	    } else {
+	      sliderImage.classList.remove('active');
+	    }
+	  });
+	}
+
+	window.addEventListener('scroll', debounce(checkSlide));
+
 	function scrollNav() {
-	    (0, _jquery2.default)('.navbar a').click(function () {
-	        //Toggle Class
-	        (0, _jquery2.default)(".active").removeClass("active");
-	        (0, _jquery2.default)(this).closest('li').addClass("active");
-	        var theClass = (0, _jquery2.default)(this).attr("class");
-	        (0, _jquery2.default)('.' + theClass).parent('li').addClass('active');
-	        //Animate
-	        (0, _jquery2.default)('html, body').stop().animate({
-	            scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).offset().top - 160
-	        }, 400);
-	        return false;
-	    });
-	    (0, _jquery2.default)('.scrollTop a').scrollTop();
+	  (0, _jquery2.default)('.navbar a').click(function () {
+	    //Toggle Class
+	    (0, _jquery2.default)(".active").removeClass("active");
+	    (0, _jquery2.default)(this).closest('li').addClass("active");
+	    var theClass = (0, _jquery2.default)(this).attr("class");
+	    (0, _jquery2.default)('.' + theClass).parent('li').addClass('active');
+	    //Animate
+	    (0, _jquery2.default)('html, body').stop().animate({
+	      scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).offset().top - 160
+	    }, 400);
+	    return false;
+	  });
+	  (0, _jquery2.default)('.scrollTop a').scrollTop();
 	}
 	scrollNav();
 
 	(0, _jquery2.default)('.open_menu').click(function () {
-	    (0, _jquery2.default)('.navbar').toggleClass('navbar_open');
-	    (0, _jquery2.default)('.open_menu').toggleClass('open');
+	  (0, _jquery2.default)('.navbar').toggleClass('navbar_open');
+	  (0, _jquery2.default)('.open_menu').toggleClass('open');
 	});
 
 	//back to top button //
 	var offset = 250;
-	var duration = 300;
 
 	(0, _jquery2.default)(window).scroll(function () {
-	    if ((0, _jquery2.default)(this).scrollTop() > offset) {
+	  if ((0, _jquery2.default)(this).scrollTop() > offset) {
 
-	        (0, _jquery2.default)('.back-to-top').fadeIn(duration);
-	    } else {
-	        (0, _jquery2.default)('.back-to-top').fadeOut(duration);
-	    }
+	    (0, _jquery2.default)('.back-to-top').fadeIn(500);
+	  } else {
+	    (0, _jquery2.default)('.back-to-top').fadeOut(500);
+	  }
 	});
 	(0, _jquery2.default)('.back-to-top').click(function (event) {
-	    event.preventDefault();
-	    (0, _jquery2.default)('html, body').animate({ scrollTop: 0 }, duration);
-	    return false;
+	  event.preventDefault();
+	  (0, _jquery2.default)('html, body').animate({ scrollTop: 0 }, 500);
+	  return false;
 	});
 
 	function scrollpls() {
-	    var navbar = document.getElementById('header');
-	    if (window.scrollY >= 183) {
-	        navbar.classList.add('scroll_nav');
-	    } else {
-	        navbar.classList.remove('scroll_nav');
-	    }
+	  var navbar = document.getElementById('header');
+	  if (window.scrollY >= 183) {
+	    navbar.classList.add('scroll_nav');
+	  } else {
+	    navbar.classList.remove('scroll_nav');
+	  }
 	}
 
 	window.addEventListener('scroll', scrollpls);
+
+	function debounce(func) {
+	  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+	  var immediate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+	  var timeout;
+	  return function () {
+	    var context = this,
+	        args = arguments;
+	    var later = function later() {
+	      timeout = null;
+	      if (!immediate) func.apply(context, args);
+	    };
+	    var callNow = immediate && !timeout;
+	    clearTimeout(timeout);
+	    timeout = setTimeout(later, wait);
+	    if (callNow) func.apply(context, args);
+	  };
+	};
 
 	exports.default = MobileMenu;
 
@@ -10882,7 +10920,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _jquery = __webpack_require__(2);
@@ -10894,47 +10932,8 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var MyHeader = function MyHeader() {
-	  _classCallCheck(this, MyHeader);
+	    _classCallCheck(this, MyHeader);
 	};
-
-	function debounce(func) {
-	  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
-	  var immediate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-	  var timeout;
-	  return function () {
-	    var context = this,
-	        args = arguments;
-	    var later = function later() {
-	      timeout = null;
-	      if (!immediate) func.apply(context, args);
-	    };
-	    var callNow = immediate && !timeout;
-	    clearTimeout(timeout);
-	    timeout = setTimeout(later, wait);
-	    if (callNow) func.apply(context, args);
-	  };
-	};
-
-	var sliderContent = document.querySelectorAll('.slide');
-
-	function checkSlide() {
-	  sliderContent.forEach(function (slide) {
-
-	    var slideInAt = window.scrollY + window.innerHeight - slide.height / 4;
-
-	    var imageBottom = slide.offsetTop + slide.height;
-	    var isHalfShown = slideInAt > slide.offsetTop;
-	    var isNotScrolledPast = window.scrollY < imageBottom;
-	    if (isHalfShown && isNotScrolledPast) {
-	      slide.classList.add('active');
-	    } else {
-	      slide.classList.remove('active');
-	    }
-	  });
-	}
-
-	window.addEventListener('scroll', debounce(checkSlide));
 
 	exports.default = MyHeader;
 
@@ -10953,23 +10952,6 @@
 	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function scrollNav() {
-	  (0, _jquery2.default)('.navbar a').click(function () {
-	    //Toggle Class
-	    (0, _jquery2.default)(".active").removeClass("active");
-	    (0, _jquery2.default)(this).closest('li').addClass("active");
-	    var theClass = (0, _jquery2.default)(this).attr("class");
-	    (0, _jquery2.default)('.' + theClass).parent('li').addClass('active');
-	    //Animate
-	    (0, _jquery2.default)('html, body').stop().animate({
-	      scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).offset().top - 160
-	    }, 400);
-	    return false;
-	  });
-	  (0, _jquery2.default)('.scrollTop a').scrollTop();
-	}
-	scrollNav();
 
 	exports.default = ScrollMenu;
 

@@ -434,6 +434,29 @@ body {
    
 }
 
+.slide_down {
+    -webkit-transform: translateX(-80%) scale(0.70);
+            transform: translateX(-80%) scale(0.70);
+    opacity: 0;
+    transition: all .5s;
+    
+}
+
+.slide_down.active {
+    -webkit-transform: translateX(0%) scale(1);
+            transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+
+.slide_fadeIn {
+    opacity: 0;
+    
+}
+
+.animated {
+     opacity: 1;
+}
+
 .slideshow {
     position: relative;
     width: 100%;
@@ -467,7 +490,7 @@ body {
 }
 
 .slide1 {
-    background-image: url(../../images/photo1.jpg);
+    background-image: url(../../images/architecture_skyscraper_glass_skyscrapers.jpg);
     opacity: 0.8;
 }
 
@@ -484,7 +507,7 @@ body {
   position: relative;
   color:#FFF;
   font-family: 'Cormorant', serif;
-  background: rgba(37,182,210,0.2);
+  text-shadow: 2px 2px 2px #bbbbbb;
 }
 
 @media (min-width: 730px) {
@@ -496,8 +519,8 @@ body {
 }
 
 .slide2 {
-    background-image: url(../../images/photo3.jpg);
-    -webkit-animation: slide2Anim 20s infinite;
+    background-image:url(../../images/photo1.jpg); 
+    -webkit-animation: slide2Anim 20s infinite; 
             animation: slide2Anim 20s infinite;
      opacity: 0.3;
 }
@@ -513,8 +536,9 @@ body {
           transform: translateY(-30%);
   position: relative;
   text-transform: uppercase;
-  font-family: 'Cormorant', serif, cursive;
+  font-family: 'Cormorant', serif;
   color:#FFF;
+  text-shadow: 2px 2px 2px #bbbbbb;
 }
 
 @media (min-width: 730px) {
@@ -644,16 +668,23 @@ body {
 
 .section1_grid2_h {
   color:#25b6d2;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-family: 'Cormorant', serif;
   font-weight: 300;
 }
 
-@media (min-width: 730px) {
+@media (min-width: 530px) {
 
   .section1_grid2_h {
     font-size: 2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+
+  .section1_grid2_h {
+    font-size: 2.5rem;
   }
 }
 
@@ -735,8 +766,9 @@ body {
         padding: 10px 10px;
         height: auto;
         width: auto;
-        top:15%;
+        
         margin: 0;
+        box-sizing: border-box;
     }
 
 @media (min-width: 730px) {
@@ -778,6 +810,7 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   box-shadow:  0 10px 26px -10px #25b6d2;
+  box-sizing: border-box;
 }
 
 @media (min-width: 730px) {
@@ -906,6 +939,24 @@ body {
   }
 }
 
+.section3__conteiner > div {
+  height: auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width:auto;
+  box-sizing: border-box;
+}
+
 .section3__conteiner > div ul {
   list-style: none;
 }
@@ -923,6 +974,9 @@ body {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
   grid-gap: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (min-width: 730px) {
@@ -936,15 +990,30 @@ body {
 .section3__conteiner div:nth-child(2) form p {
   margin: 0;
   padding:0.5em;
+  box-sizing: border-box;
+}
+
+.section3__conteiner div:nth-child(2) form p:hover input{
+  border: 1.5px solid #7ee26a;
 }
 
 .section3__conteiner div:nth-child(2) form p > input {
   padding: 1em 1em;
+  border: 1.5px solid #25b6d2;
+  transition: ease-in 500ms;
+  font-size: 1rem;
 }
 
 .section3__conteiner div:nth-child(2) form p textarea  {
   padding: 1em 1em;
   height: 90px;
+  border: 1.5px solid grey;
+  transition: ease-in 500ms;
+  font-size: 1rem;
+}
+
+.section3__conteiner div:nth-child(2) form p textarea:hover {
+  border: 1.5px solid #7ee26a;
 }
 
 .section3__conteiner div:nth-child(2) form p button {
@@ -1313,7 +1382,7 @@ body {
 
 #map {
     width: 100%;
-    height: 400px;
+    height: 100%;
    position: relative;
 }
 
@@ -1321,6 +1390,6 @@ body {
     
     margin: 0;
     padding: 0;
-    height: 400px;
+    height: 500px;
     width: 100%;
 }

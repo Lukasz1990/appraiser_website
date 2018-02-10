@@ -17,3 +17,23 @@ body {
 
 
 
+.slide_down {
+    transform: translateX(-80%) scale(0.70);
+    opacity: 0;
+    transition: all .5s;
+    
+}
+
+ .slide_down.active {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+}
+
+.slide_fadeIn {
+    opacity: 0;
+    
+}
+
+ .animated {
+     opacity: 1;
+}

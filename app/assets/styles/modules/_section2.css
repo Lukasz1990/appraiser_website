@@ -14,6 +14,7 @@
     margin: 0;
     margin-bottom: -10px;
     
+    
      
     @mixin atMedium {
         height: 80vh;
@@ -46,8 +47,9 @@
         padding: 10px 10px;
         height: auto;
         width: auto;
-        top:15%;
+        
         margin: 0;
+        box-sizing: border-box;
      
         
         
@@ -56,6 +58,7 @@
                grid-template-columns:repeat(2, 1fr);
                grid-gap: 100px;
                grid-auto-rows: 100px;
+           
         }
      
      @mixin atLarge {
@@ -84,7 +87,7 @@
             -webkit-box-shadow: 0 10px 26px -10px $lightBlue;
             -moz-box-shadow: 0 10px 26px -10px $lightBlue;
             box-shadow:  0 10px 26px -10px $lightBlue;
-            
+            box-sizing: border-box;
            
             @mixin atSmall {
             font-size: 1.2rem;

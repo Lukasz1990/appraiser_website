@@ -48,6 +48,17 @@
             grid-template-columns:1fr 1fr;
         }
         
+        & > div {
+            height: auto;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width:auto;
+             box-sizing: border-box;
+        }
+        
         & > div ul {
             list-style: none;
             
@@ -63,6 +74,9 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-gap: 5px;
+                justify-content: center;
+                
+
                 
                 @mixin atSmall {
                     grid-template-columns: 1fr 1fr;
@@ -71,14 +85,32 @@
                 & p {
                     margin: 0;
                     padding:0.5em;
+                     box-sizing: border-box;
+                      &:hover input{
+                            border: 1.5px solid #7ee26a;
+                          
+                       
+                        }
                     
                     & > input {
                         padding: 1em 1em;
+                       
+                        border: 1.5px solid $lightBlue;
+                        transition: ease-in 500ms;
+                        font-size: 1rem;
+                      
                     }
                     
                     & textarea  {
                         padding: 1em 1em;
                         height: 90px;
+                         border: 1.5px solid grey;
+                        transition: ease-in 500ms;
+                        font-size: 1rem;
+                        &:hover {
+                            border: 1.5px solid #7ee26a;
+                       
+                        }
                     }
                     
                     & button {
