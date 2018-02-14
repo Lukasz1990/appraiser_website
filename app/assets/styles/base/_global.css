@@ -1,9 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
     background-color: #FFF;
     box-sizing: border-box;
+   
 }
 
 
@@ -11,7 +11,7 @@ body {
 
 
 .wrapper {
-    margin: 40px 40px;
+     padding: 30px 20px;
    
 }
 
@@ -20,7 +20,7 @@ body {
 .slide_down {
     transform: translateX(-80%) scale(0.70);
     opacity: 0;
-    transition: all .5s;
+    transition: all .7s;
     
 }
 
@@ -29,11 +29,6 @@ body {
     opacity: 1;
 }
 
-.slide_fadeIn {
-    opacity: 0;
-    
-}
 
- .animated {
-     opacity: 1;
-}
+
+
