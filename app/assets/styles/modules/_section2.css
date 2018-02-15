@@ -27,7 +27,7 @@
         text-transform: uppercase;
         font-family: 'Cormorant', serif;
         font-weight: 300;
-        transform: translateY(20px);
+       
         
         @mixin atSmall {
              font-size: 4rem;
@@ -47,7 +47,6 @@
         padding: 10px 10px;
         height: auto;
         width: auto;
-        
         margin: 0;
         box-sizing: border-box;
      
@@ -79,7 +78,6 @@
             display: block;
             color:#FFF;
             font-family: 'Cormorant', serif;
-            font-size: 1.2rem;
             text-transform: uppercase;
             -webkit-box-shadow: 0 10px 26px -10px $lightBlue;
             -moz-box-shadow: 0 10px 26px -10px $lightBlue;
@@ -90,24 +88,26 @@
          
             & h3 {
                 text-align: center;
-           
+                 font-size: 1.4rem;
                 
                 
   
             }
                 
                &   ul {
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
                     text-transform: none;
                    font-family: 'Merriweather', serif;
                    list-style: none;
                    
-                   
+                      @mixin atSmall {
+            font-size: 1em;
+            }
                      
                 }
            
             @mixin atSmall {
-            font-size: 1.5rem;
+            font-size: 1rem;
             }
         }
         
